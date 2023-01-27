@@ -1,0 +1,1 @@
+# CORDEX domain tables
