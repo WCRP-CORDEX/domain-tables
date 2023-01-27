@@ -1,2 +1,2 @@
-domain_id,domain_name,tlc_lon,tlc_lat,cnb_lon,cnb_lat,trc_lon,trc_lat,cwb_lon,cwb_lat,cpd_lon,cpd_lat,ceb_lon,ceb_lat,blc_lon,blc_lat,csb_lon,csb_lat,brc_lon,brc_lat
-EUR,Europe,315.86,60.21,1.92,71.84,64.4,66.65,338.23,42.36,9.75,49.68,44.77,46.72,350.01,22.2,12.48,27.34,36.30,25.36
+region,domain_id,domain_name,tlc_lon,tlc_lat,cnb_lon,cnb_lat,trc_lon,trc_lat,cwb_lon,cwb_lat,cpd_lon,cpd_lat,ceb_lon,ceb_lat,blc_lon,blc_lat,csb_lon,csb_lat,brc_lon,brc_lat
+1,EUR,Europe,315.86,60.21,1.92,71.84,64.4,66.65,338.23,42.36,9.75,49.68,44.77,46.72,350.01,22.2,12.48,27.34,36.30,25.36
