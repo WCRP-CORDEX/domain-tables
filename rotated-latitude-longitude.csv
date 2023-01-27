@@ -1,4 +1,4 @@
-region,domain_id,domain_name,nlon,nlat,ll_lon,ur_lon,ll_lat,ur_lat,dlon,dlat,pollon,pollat
+region,domain_id,domain,nlon,nlat,ll_lon,ur_lon,ll_lat,ur_lat,dlon,dlat,pollon,pollat
 1,SAM-11,South America,584,668,143.755,207.885,-38.445,34.925,0.11,0.11,-56.06,70.6
 2,CAM-11,Central America,840,452,-52.965,39.325,-28.765,20.845,0.11,0.11,113.98,75.74
 3,NAM-11,North America,620,520,-34.045,34.045,-28.565,28.525,0.11,0.11,83,42.5
