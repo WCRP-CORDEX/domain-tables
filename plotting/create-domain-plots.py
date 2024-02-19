@@ -103,7 +103,7 @@ def plot_domain(domain_id, figsize=None):
         alpha=1.0,
         lw=2.0,
     )
- 
+
     filename = op.join(figpath, f"{domain_id}.png")
     print(f"creating: {filename}")
     plt.savefig(filename)
@@ -133,13 +133,14 @@ def create_domain_section(df, template, fmt):
 
 if __name__ == "__main__":
     import sys
+
     try:
         fmt = sys.argv[1]
     except Exception:
         fmt = "html"
 
     df = pd.read_csv(
-        table, 
+        table,
         index_col="domain_id",
     )
 
@@ -151,5 +152,5 @@ if __name__ == "__main__":
 
     for domain_id in df.index:
         print(domain_id)
-        #plot_domain(domain_id)
+        # plot_domain(domain_id)
     create_domain_section(df, template=op.join(bookpath, "domains.tpl"), fmt=fmt)
