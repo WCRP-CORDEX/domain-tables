@@ -1,0 +1,13 @@
+name: cordex-plotting
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - pandas
+  - cartopy
+  - matplotlib-base
+  - jupyter-book
+  - requests
+  - aiohttp
+  - sphinx
+  - tabulate
