@@ -4,6 +4,8 @@ channels:
   - nodefaults
 dependencies:
   - pandas
+  - pyproj
+  - shapely
   - cartopy
   - matplotlib-base
   - jupyter-book
