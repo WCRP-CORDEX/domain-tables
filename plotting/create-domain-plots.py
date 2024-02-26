@@ -10,7 +10,7 @@ from shapely.geometry import Polygon
 bookpath = op.dirname(os.path.abspath(__file__))
 figs = "figs"
 figpath = op.join(bookpath, figs)
-table = "https://raw.githubusercontent.com/WCRP-CORDEX/domain-tables/rearrange/CORDEX-CMIP5_rotated_grids.csv"
+table = "https://raw.githubusercontent.com/WCRP-CORDEX/domain-tables/main/CORDEX-CMIP5_rotated_grids.csv"
 
 
 def create_polygon(domain_id):
