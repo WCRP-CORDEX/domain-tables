@@ -6,6 +6,6 @@ more precisely as `domain_id` which indicates the domain resolution roughly in k
 
 ## Tables
 
-* `CORDEX-CMIP5_rotated_grids.csv`: Table with domain definitions in the rotated pole CRS (`rotated_latitude_longitude`).
-* `CORDEX-CMIP5_regular_grids.csv`: Table with domain definitions in a regular latitude longitude CRS (`EPSG:4326`).
-* `CORDEX-CMIP6_domain_boundaries.csv`: Table with domain boundaries in a regular latitude longitude CRS (`EPSG:4326`).
+* `CORDEX-CMIP5_rotated_grids.csv`: Domain definitions in the rotated pole CRS (`rotated_latitude_longitude`).
+* `CORDEX-CMIP5_regular_grids.csv`: Domain definitions in a regular latitude longitude CRS (`EPSG:4326`).
+* `CORDEX-CMIP6_domain_boundaries.csv`: Domain boundaries in a regular latitude longitude CRS (`EPSG:4326`).
