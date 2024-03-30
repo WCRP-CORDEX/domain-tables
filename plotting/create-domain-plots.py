@@ -152,5 +152,5 @@ if __name__ == "__main__":
 
     for domain_id in df.index:
         print(domain_id)
-        # plot_domain(domain_id)
+        plot_domain(domain_id)
     create_domain_section(df, template=op.join(bookpath, "domains.tpl"), fmt=fmt)
