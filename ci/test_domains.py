@@ -46,7 +46,7 @@ def scale_domain(table, domain_id, dl):
     dm["dlat"] = dl
     dm["ur_lon"] = dm.ll_lon + (dm.nlon - 1) * dl
     dm["ur_lat"] = dm.ll_lat + (dm.nlat - 1) * dl
-    dm["CORDEX_domain"] = f"{domain_id.split("-")[0]}-{int(dm.dlon*100)}"
+    dm["CORDEX_domain"] = f"{domain_id.split('-')[0]}-{int(dm.dlon*100)}"
     dm.name = f"{domain_id.split("-")[0]}-{km_map[dl]}"
     return dm
 
