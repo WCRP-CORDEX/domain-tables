@@ -29,7 +29,6 @@ def boundaries(ll_lon, ll_lat, nlon, nlat, dl):
         ll_lon + (nlon - 0.5) * dl,
         ll_lat + (nlat - 0.5) * dl,
     )
-    print(bounds)
     return tuple(map(lambda x: np.round(x, 7), bounds))
 
 
@@ -47,9 +46,15 @@ def check_boundaries(df):
     return {region: check_boundary(table) for region, table in df.groupby("region")}
 
 
+def check_lower_lefts(df):
+    return {region: check_boundary(table) for region, table in df.groupby("region")}
+
+
 def test_boundaries(table):
     checks = check_boundaries(table)
     print("Checking boundaries")
     for region, check in checks.items():
         print(f"Region {region}: {check}")
-        # assert check
+        # some exceptios here for CORDEX CORE SEA-25
+        if region not in [7]:
+            assert check
