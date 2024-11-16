@@ -36,3 +36,4 @@ region,domain_id,domain,CORDEX_domain,nlon,nlat,ll_lon,ur_lon,ll_lat,ur_lat,dlon
 8,CAS-25,Central Asia,CAS-22,306,200,-34.43,32.67,-20.79,22.99,0.22,0.22,-103.39,43.48
 9,AUS-25,Australasia,AUS-22,400,258,142.05,229.83,-22.99,33.55,0.22,0.22,141.38,60.31
 14,SEA-25,South East Asia,SEA-22,264,194,89.26,147.12,-15.18,27.28,0.22,0.22,180.0,90.0
+14,SEA-12,South East Asia,SEA-11,528,388,89.205,147.175,-15.235,27.335,0.11,0.11,180.0,90.0
