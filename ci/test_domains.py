@@ -38,6 +38,7 @@ def scale(dm, dl):
 
 
 def scale_domain(table, domain_id, dl):
+    """scale a domain to a new resolution"""
     dm = table.loc[domain_id].copy()
     dm["ll_lon"], dm["ll_lat"], dm["nlon"], dm["nlat"] = _scale(
         dm.ll_lon, dm.ll_lat, dm.nlon, dm.nlat, dm.dlon, dl
@@ -52,6 +53,7 @@ def scale_domain(table, domain_id, dl):
 
 
 def boundaries(ll_lon, ll_lat, nlon, nlat, dl):
+    """compute boundaries of a domain"""
     bounds = (
         ll_lon - 0.5 * dl,
         ll_lat - 0.5 * dl,
@@ -72,6 +74,7 @@ def check_boundary(table):
 
 
 def check_scale(table):
+    """find first domain in a region and check if scaling is consistent"""
     scale0 = table.iloc[0]
     for domain_id, dm in table.iterrows():
         scaled = scale_domain(table, scale0.name, dm.dlon)
@@ -99,3 +102,11 @@ def test_scales(table):
     for region, table in table.groupby("region"):
         if region not in [7]:
             check_scale(table)
+
+
+def test_east_north(table):
+    """check if east and north boundaries are consistent"""
+    for domain_id, dm in table.iterrows():
+        print(f"Testing east north: {domain_id}")
+        assert dm.ur_lon == np.round(dm.ll_lon + (dm.nlon - 1) * dm.dlon, 7)
+        assert dm.ur_lat == np.round(dm.ll_lat + (dm.nlat - 1) * dm.dlat, 7)
