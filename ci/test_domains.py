@@ -10,7 +10,7 @@ km_map = {
 }
 
 
-df = pd.read_csv("CORDEX-CMIP6_rotated_grids.csv", index_col="domain_id")
+# df = pd.read_csv("CORDEX-CMIP6_rotated_grids.csv", index_col="domain_id")
 
 
 @pytest.fixture
@@ -84,10 +84,6 @@ def check_boundaries(df):
     return {region: check_boundary(table) for region, table in df.groupby("region")}
 
 
-def check_scales(table):
-    return {region: check_boundary(table) for region, table in df.groupby("region")}
-
-
 def test_boundaries(table):
     checks = check_boundaries(table)
     print("Checking boundaries")
@@ -100,6 +96,6 @@ def test_boundaries(table):
 
 def test_scales(table):
     print("Checking correct scaling")
-    for region, table in df.groupby("region"):
+    for region, table in table.groupby("region"):
         if region not in [7]:
             check_scale(table)
