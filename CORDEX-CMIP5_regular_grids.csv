@@ -13,5 +13,5 @@ region,domain_id,domain,CORDEX_domain,nlon,nlat,ll_lon,ur_lon,ll_lat,ur_lat,dlon
 12,MED-50i,Mediterranean,MED-44i,144,65,-20.75,51.75,25.25,57.25,0.5,0.5
 13,MNA-50i,Middle East and North Africa,MNA-44i,206,106,-26.75,75.75,-7.25,45.25,0.5,0.5
 13,MNA-25i,Middle East and North Africa,MNA-22i,410,209,-26.625,75.625,-6.875,45.125,0.25,0.25
-4,EUR-12i,Europe high res.,EUR-11i,881,408,-44.8125,65.1875,21.8125,72.6875,0.125,0.125
+4,EUR-12i,Europe,EUR-11i,881,408,-44.8125,65.1875,21.8125,72.6875,0.125,0.125
 14,SEA-25i,South East Asia,SEA-22i,233,172,89.125,147.125,-15.375,27.375,0.25,0.25
