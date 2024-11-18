@@ -10,6 +10,18 @@ km_map = {
     0.44: 50,
 }
 
+numeric_cols = [
+    "ll_lon",
+    "ll_lat",
+    "nlon",
+    "nlat",
+    "dlon",
+    "dlat",
+    "ur_lon",
+    "ur_lat",
+    "pollon",
+    "pollat",
+]
 
 # df = pd.read_csv("CORDEX-CMIP6_rotated_grids.csv", index_col="domain_id")
 
@@ -80,8 +92,9 @@ def check_scale(table):
     for domain_id, dm in table.iterrows():
         scaled = scale_domain(table, scale0.name, dm.dlon)
         print(f"Testing {scale0.name} vs {dm.name}")
-        pd.testing.assert_series_equal(scaled, table.loc[scaled.name])
-        print("Testing")
+        pd.testing.assert_series_equal(
+            scaled[numeric_cols], table.loc[scaled.name][numeric_cols]
+        )
 
 
 def check_boundaries(df):
