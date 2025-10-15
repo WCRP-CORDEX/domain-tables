@@ -7,6 +7,8 @@ Grid information of CORDEX domains in machine readable format.
 > [!IMPORTANT]
 > Note that the domain identifier changes from CMIP5 to CMIP6 (from `CORDEX_domain` to `domain_id`): The global attribute that defines the domain in CMIP5 is named `CORDEX_domain` where the domain resolution is indicated in degrees, e.g., `EUR-11` means Europe on a 0.11° resolution. The global attribute in CMIP6 is named more precisely as `domain_id` which indicates the domain resolution roughly in km, which means that `EUR-11` becomes `EUR-12`! See also https://github.com/WCRP-CORDEX/cordex-cmip6-cv/issues/2.
 
+<img width="1181" height="490" alt="grafik" src="https://github.com/user-attachments/assets/3c9affe9-27dc-4672-a333-182dd8e7cfe8" />
+
 ## Adding new domains
 
 For establishing a new CORDEX domain one needs to apply to the CORDEX SAT [according to this document](https://cordex.org/wp-content/uploads/2020/09/Domain-Criteria-Document-FINAL.pdf).
