@@ -46,6 +46,7 @@ region,domain_id,domain,CORDEX_domain,short_name,long_name,nlon,nlat,ll_lon,ur_l
 6,WAS-50i,South Asia,WAS-44i,WAS-44i,South Asia,195,124,19.25,116.25,-15.75,45.75,0.5,0.5,,
 7,EAS-50i,East Asia,EAS-44i,EAS-44i,East Asia,227,157,62.75,175.75,-18.75,59.25,0.5,0.5,,
 8,CAS-50i,Central Asia,CAS-44i,CAS-44i,Central Asia,260,133,10.75,140.25,17.75,69.75,0.5,0.5,,
+9,AUS-20i,Australasia,,AUS-20i,Australasia,464,306,89.3,181.9,-52.3,8.7,0.2,0.2,,
 9,AUS-50i,Australasia,AUS-44i,AUS-44i,Australasia,238,133,88.75,207.25,-53.25,12.75,0.5,0.5,,
 10,ANT-50i,Antarctica,ANT-44i,ANT-44i,Antarctica,720,70,-179.75,179.75,-89.75,-55.25,0.5,0.5,,
 11,ARC-50i,Arctic,ARC-44i,ARC-44i,Arctic,720,83,-179.75,179.75,48.75,89.75,0.5,0.5,,
