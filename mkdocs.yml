@@ -1,0 +1,88 @@
+site_name: CORDEX Domain Definitions 
+site_url: https://wcrp-cordex.github.io/domain-tables
+repo_url: https://github.com/WCRP-CORDEX/domain-tables
+repo_name: WCRP-CORDEX/domain-tables
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.indexes
+    - toc.follow
+    #- toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+    - content.footnote.tooltips
+  language: en
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline 
+        name: Switch to dark mode
+      primary: "teal"
+      accent: "amber"
+    - scheme: slate 
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode    
+      primary: "teal"
+      accent: "amber"
+  logo: assets/images/CORDEX_RGB_logo_negative.png
+  favicon: assets/images/favicon.png
+
+plugins:
+  - search
+  - exporter:
+      formats:
+        pdf:
+          explicit: true
+          stylesheets:
+            - docs/assets/stylesheets/pdf.css
+          scripts:
+            - docs/assets/scripts/pdf-header.js
+      buttons:
+        - title: Download as PDF
+          icon: material-file-download-outline
+          enabled: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.enabled
+          attributes: !!python/name:mkdocs_exporter.formats.pdf.buttons.download.attributes
+
+markdown_extensions:
+  - tables
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets:
+      base_path: docs
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+extra:
+  version:
+    provider: mike
+
+extra_css:
+  - assets/stylesheets/custom.css
+
+nav:
+
+use_directory_urls: true
+strict: false

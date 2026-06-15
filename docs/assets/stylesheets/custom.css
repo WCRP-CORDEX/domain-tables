@@ -1,0 +1,55 @@
+/* Custom styles for CORDEX Archiving Specifications */
+
+/* Custom color variables */
+:root {
+  --md-primary-fg-color: #2196f3;
+  --md-primary-fg-color--light: #64b5f6;
+  --md-primary-fg-color--dark: #1976d2;
+}
+
+/* Custom heading styles */
+.md-typeset h1 {
+  color: var(--md-primary-fg-color);
+  font-weight: 700;
+}
+
+/* Custom link colors */
+.md-content a {
+  color: var(--md-primary-fg-color);
+}
+
+.md-content a:hover {
+  color: var(--md-primary-fg-color--light);
+}
+
+/* Increase the logo size in the navbar */
+.md-header__button.md-logo {
+    margin: 0;
+    padding: 0;
+}
+
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 3rem;
+    width: auto;
+}
+
+/* Improve table readability */
+.md-typeset table:not([class]) {
+    font-size: 0.85em;
+    border-collapse: collapse;
+}
+
+.md-typeset table:not([class]) th {
+    background-color: var(--md-primary-fg-color--light);
+    font-weight: 600;
+}
+
+/* Code blocks for CDL examples */
+.md-typeset code {
+    font-family: 'Monaco', 'Consolas', 'Courier New', monospace;
+}
+
+/* Footnotes */
+.md-typeset .footnote {
+    font-size: 0.9em;
+}
