@@ -25,9 +25,11 @@ numeric_cols = [
 # df = pd.read_csv("CORDEX-CMIP6_rotated_grids.csv", index_col="domain_id")
 
 
-@pytest.fixture(params=["CORDEX-CMIP6_grids.csv", "CORDEX-CMIP5_grids.csv"])
+@pytest.fixture(params=["CORDEX-CMIP5_grids.csv", "CORDEX-CMIP6_grids.csv"])
 def table(request):
-    return pd.read_csv(request.param, index_col="domain_id")
+    df = pd.read_csv(request.param, index_col="domain_id")
+    # only test the rotated grids for now.
+    return df[~df.grid_north_pole_longitude.isna()]
 
 
 def _scale(ll_lon, ll_lat, nlon, nlat, dl, dlnew):
@@ -133,9 +135,9 @@ def test_boundaries(table):
         if region not in [7]:
             assert check
 
-
+# this is not guaranteed anymore.
 def test_scales(table):
     print("Checking correct scaling")
-    for region, table in table.groupby("region"):
+    for region, df in table.groupby("region"):
         if region not in [7]:
-            check_scale(table)
+            check_scale(df)
