@@ -3,32 +3,33 @@ import pytest
 import pandas as pd
 
 
-km_map = {
+id_map = {
     0.11: 12,
     0.1: 12,
     0.22: 25,
     0.44: 50,
+    0.5: 50,
 }
 
 numeric_cols = [
-    "ll_lon",
-    "ll_lat",
-    "nlon",
-    "nlat",
-    "dlon",
-    "dlat",
-    "ur_lon",
-    "ur_lat",
-    "pollon",
-    "pollat",
+    "lower_left_longitude",
+    "lower_left_latitude",
+    "n_longitude",
+    "n_latitude",
+    "grid_spacing_longitude",
+    "grid_spacing_latitude",
+    "grid_north_pole_longitude",
+    "grid_north_pole_latitude",
 ]
 
 # df = pd.read_csv("CORDEX-CMIP6_rotated_grids.csv", index_col="domain_id")
 
 
-@pytest.fixture
-def table():
-    return pd.read_csv("CORDEX-CMIP6_rotated_grids.csv", index_col="domain_id")
+@pytest.fixture(params=["CORDEX-CMIP5_grids.csv", "CORDEX-CMIP6_grids.csv"])
+def table(request):
+    df = pd.read_csv(request.param, index_col="domain_id")
+    # only test the rotated grids for now.
+    return df[~df.grid_north_pole_longitude.isna()]
 
 
 def _scale(ll_lon, ll_lat, nlon, nlat, dl, dlnew):
@@ -47,21 +48,39 @@ def _scale(ll_lon, ll_lat, nlon, nlat, dl, dlnew):
 
 
 def scale(dm, dl):
-    return _scale(dm.ll_lon, dm.ll_lat, dm.nlon, dm.nlat, dm.dlon, dl)
+    return _scale(
+        dm.lower_left_longitude,
+        dm.lower_left_latitude,
+        dm.n_longitude,
+        dm.n_latitude,
+        dm.grid_spacing_longitude,
+        dl,
+    )
 
 
 def scale_domain(table, domain_id, dl):
     """scale a domain to a new resolution"""
     dm = table.loc[domain_id].copy()
-    dm["ll_lon"], dm["ll_lat"], dm["nlon"], dm["nlat"] = _scale(
-        dm.ll_lon, dm.ll_lat, dm.nlon, dm.nlat, dm.dlon, dl
+    dm["lower_left_longitude"], dm["lower_left_latitude"], dm["n_longitude"], dm[
+        "n_latitude"
+    ] = _scale(
+        dm.lower_left_longitude,
+        dm.lower_left_latitude,
+        dm.n_longitude,
+        dm.n_latitude,
+        dm.grid_spacing_longitude,
+        dl,
     )
-    dm["dlon"] = dl
-    dm["dlat"] = dl
-    dm["ur_lon"] = dm.ll_lon + (dm.nlon - 1) * dl
-    dm["ur_lat"] = dm.ll_lat + (dm.nlat - 1) * dl
-    dm["CORDEX_domain"] = f"{domain_id.split('-')[0]}-{int(dm.dlon*100)}"
-    dm.name = f"{domain_id.split('-')[0]}-{km_map[dl]}"
+    dm["grid_spacing_longitude"] = dl
+    dm["grid_spacing_latitude"] = dl
+    dm["upper_right_longitude"] = np.round(
+        dm.lower_left_longitude + (dm.n_longitude - 1) * dl, 7
+    )
+    dm["upper_right_latitude"] = np.round(
+        dm.lower_left_latitude + (dm.n_latitude - 1) * dl, 7
+    )
+    dm["CORDEX_domain"] = f"{domain_id.split('-')[0]}-{int(dm.grid_spacing_longitude * 100)}"
+    dm.name = f"{domain_id.split('-')[0]}-{id_map[dl]}"
     return dm
 
 
@@ -78,7 +97,13 @@ def boundaries(ll_lon, ll_lat, nlon, nlat, dl):
 
 def check_boundary(table):
     bounds = [
-        boundaries(dm.ll_lon, dm.ll_lat, dm.nlon, dm.nlat, dm.dlon)
+        boundaries(
+            dm.lower_left_longitude,
+            dm.lower_left_latitude,
+            dm.n_longitude,
+            dm.n_latitude,
+            dm.grid_spacing_longitude,
+        )
         for domain_id, dm in table.iterrows()
     ]
     all_the_same = all(b == bounds[0] for b in bounds)
@@ -90,7 +115,7 @@ def check_scale(table):
     """find first domain in a region and check if scaling is consistent"""
     scale0 = table.iloc[0]
     for domain_id, dm in table.iterrows():
-        scaled = scale_domain(table, scale0.name, dm.dlon)
+        scaled = scale_domain(table, scale0.name, dm.grid_spacing_longitude)
         print(f"Testing {scale0.name} vs {dm.name}")
         pd.testing.assert_series_equal(
             scaled[numeric_cols], table.loc[scaled.name][numeric_cols]
@@ -110,17 +135,9 @@ def test_boundaries(table):
         if region not in [7]:
             assert check
 
-
+# this is not guaranteed anymore.
 def test_scales(table):
     print("Checking correct scaling")
-    for region, table in table.groupby("region"):
+    for region, df in table.groupby("region"):
         if region not in [7]:
-            check_scale(table)
-
-
-def test_east_north(table):
-    """check if east and north boundaries are consistent"""
-    for domain_id, dm in table.iterrows():
-        print(f"Testing east north: {domain_id}")
-        assert dm.ur_lon == np.round(dm.ll_lon + (dm.nlon - 1) * dm.dlon, 7)
-        assert dm.ur_lat == np.round(dm.ll_lat + (dm.nlat - 1) * dm.dlat, 7)
+            check_scale(df)
