@@ -18,7 +18,7 @@ For establishing a new CORDEX domain one needs to apply to the CORDEX SAT [accor
 > [!IMPORTANT]
 > These tables define CORDEX domains in different coordinate reference systems (CRS) to allow all kinds of downscaling models to participate in CORDEX activities. Please note that the coordinates in the `CORDEX-CMIP5_grids.csv` and `CORDEX-CMIP6_grids.csv` tables denote the *cell centers* while the coordinates in the `CORDEX-CMIP5_boundaries.csv` and `CORDEX-CMIP6_boundaries.csv` tables define actual *boundaries* and no cell centers.
 
-* `CORDEX-CMIP5_grids.csv`: Domain definitions in the rotated pole CRS for the CORDEX-CMIP5 era (`rotated_latitude_longitude`). 
+* `CORDEX-CMIP5_grids.csv`: Domain definitions in the rotated pole CRS in the CORDEX-CMIP5 era (`rotated_latitude_longitude`). 
 * `CORDEX-CMIP6_grids.csv`: Domain definitions in the rotated pole CRS in the CORDEX-CMIP6 era (`rotated_latitude_longitude`).
-* `CORDEX-CMIP5_boundaries.csv`: Domain definitions in a regular latitude longitude CRS (`EPSG:4326`).
-* `CORDEX-CMIP6_boundaries.csv`: Domain boundaries in a regular latitude longitude CRS (`EPSG:4326`).
+* `CORDEX-CMIP5_boundaries.csv`: Domain boundaries in a regular latitude longitude CRS in the CORDEX-CMIP5 era (`EPSG:4326`).
+* `CORDEX-CMIP6_boundaries.csv`: Domain boundaries in a regular latitude longitude CRS in the CORDEX-CMIP6 era (`EPSG:4326`).
