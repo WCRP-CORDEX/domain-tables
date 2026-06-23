@@ -1,0 +1,52 @@
+/* Global PDF page settings via Paged Media CSS */
+@page {
+  size: A4 portrait;
+  /* Reserve extra top space so the header image does not overlap content. */
+  margin: 3.50cm 1.20cm 1.20cm 1.20cm;
+}
+
+/* The header image element is injected onto each rendered PDF page. */
+.pagedjs_page {
+  position: relative;
+}
+
+.pdf-page-header {
+  align-items: flex-start;
+  display: flex;
+  position: absolute;
+  pointer-events: none;
+  top: 0.40cm;
+  left: 0;
+  right: 0;
+  height: 2.80cm;
+  justify-content: center;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  z-index: 10;
+}
+
+.pdf-page-header img {
+  display: block;
+  height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+/* Optional named pages for per-section orientation control */
+@page portrait {
+  size: A4 portrait;
+}
+@page landscape {
+  size: A4 landscape;
+}
+
+/* Apply named page boxes by assigning classes to block elements */
+.portrait-page {
+  page: portrait;
+  break-before: page;
+}
+.landscape-page {
+  page: landscape;
+  break-before: page;
+}
